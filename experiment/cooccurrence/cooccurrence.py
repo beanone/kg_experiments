@@ -37,8 +37,18 @@ class CooccurrenceGraphBuilder:
         }
 
     def preprocess(self, text: str) -> List[str]:
-        tokens = [word.lower() for word in nltk.word_tokenize(text) if re.match(r"^[a-zA-Z]{3,}$", word)]
-        return [word for word in tokens if word not in self.stop_words and word not in self.custom_exclude]
+        doc = nlp(text)
+        tokens = []
+        for token in doc:
+            if (
+                token.is_alpha
+                and len(token.text) > 2
+                and token.pos_ in {"NOUN", "ADJ"}
+                and token.lemma_.lower() not in self.stop_words
+                and token.lemma_.lower() not in self.custom_exclude
+            ):
+                tokens.append(token.lemma_.lower())
+        return tokens
 
     def build_from_documents(self, documents: List[str], window_size: int = 10, min_freq: int = 5):
         word_counts = Counter()
@@ -142,22 +152,3 @@ class HSBMCommunityModel:
         for node in self.graph.nodes:
             self.graph.nodes[node]["community"] = labels[node]
         return self.graph
-
-if __name__ == "__main__":
-    # Load the corpus
-    with open('../data/corpus.txt', 'r', encoding='utf-8') as f:
-        documents = f.readlines()
-
-    # Build the co-occurrence graph
-    builder = CooccurrenceGraphBuilder()
-    graph = builder.build_from_documents(documents)
-
-    # Visualize the graph
-    visualizer = GraphVisualizer(graph)
-    visualizer.draw_graph()
-
-    # Detect communities using hSBM
-    hSBM = HSBMCommunityModel(graph)
-    hSBM.detect()
-    visualizer = GraphVisualizer(hSBM.graph)
-    visualizer.draw_graph(node_color_by_community=True)
