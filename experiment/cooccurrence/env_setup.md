@@ -34,4 +34,5 @@ conda activate hsbm_env
 ```
 conda install spacy
 conda install openai
+conda install -c conda-forge pymupdf python-docx
 ```

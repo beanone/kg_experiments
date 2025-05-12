@@ -2,6 +2,8 @@ from typing import Dict, List
 from graph_tool.all import minimize_nested_blockmodel_dl
 import networkx as nx
 import plotly.graph_objects as go
+import fitz  # PyMuPDF
+from docx import Document
 
 
 def extract_block_levels(nx_graph: nx.Graph) -> List[Dict[str, int]]:
@@ -35,3 +37,13 @@ def extract_block_levels(nx_graph: nx.Graph) -> List[Dict[str, int]]:
         block_levels.append(word_to_block)
 
     return block_levels
+
+def extract_text_from_pdf(file_path):
+    doc = fitz.open(file_path)
+    text_blocks = [page.get_text() for page in doc]
+    full_text = "\n".join(text_blocks)
+    return [p.strip() for p in full_text.split("\n\n") if len(p.strip()) > 40]
+
+def extract_text_from_docx(file_path):
+    doc = Document(file_path)
+    return [para.text.strip() for para in doc.paragraphs if len(para.text.strip()) > 40]
