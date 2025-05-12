@@ -112,3 +112,5 @@ conda-meta/
 
 # Ignore notebook output files (optional, uncomment if needed)
 # *.out.ipynb
+
+*.pdf
