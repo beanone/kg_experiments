@@ -7,9 +7,12 @@ from typing import List, Dict
 from collections import Counter, defaultdict
 import math
 import re
+from collections import Counter
 import graph_tool.all as gt
-from graph_tool.all import draw_hierarchy
+from pyvis.network import Network
+from graph_tool.all import draw_hierarchy, NestedBlockState
 import plotly.graph_objects as go
+import openai  # Only if using LLM method
 
 # Download NLTK corpora as needed
 for resource in ["stopwords", "punkt"]:
@@ -155,6 +158,20 @@ class HSBMCommunityModel:
             self.graph.nodes[node]["community"] = labels[node]
         return self.graph
 
+    def detect_add_level(self):
+        """Assigns a 'levels' dict to each node, mapping each hierarchy level to its community assignment."""
+        gt_graph = self.convert_to_graphtool()
+        state = gt.minimize_nested_blockmodel_dl(gt_graph)
+        levels = state.get_levels()  # List of BlockState objects from top to bottom
+        name_prop = gt_graph.vp["name"]
+        for v in gt_graph.vertices():
+            node_name = name_prop[v]
+            self.graph.nodes[node_name]['levels'] = {}
+            for level_idx, block_state in enumerate(levels):
+                blocks = block_state.get_blocks()
+                self.graph.nodes[node_name]['levels'][level_idx] = int(blocks[v])
+        return self.graph
+
 # Topic Mapping: Assign topics to documents based on graph communities
 class TopicDocumentMapper:
     def __init__(self, graph: nx.Graph, documents: List[str], preprocess_fn, block_levels: List[Dict[str, int]] = None):
@@ -237,18 +254,36 @@ class TopicDocumentMapper:
                     f.write(f"**Document {doc_idx}**:\n\n{snippet[:doc_length]}...\n\n")
 
     def draw_cluster_tree(self, state, output_file="topic_tree.pdf"):
-        from graph_tool.all import draw_hierarchy, NestedBlockState
         if not isinstance(state, NestedBlockState):
             print("Error: 'state' must be a NestedBlockState with hierarchy.")
             return
         print(f"Rendering topic tree to {output_file}...")
         draw_hierarchy(state, output=output_file)
-        from graph_tool.all import draw_hierarchy
-        draw_hierarchy(state, output=output_file)
+
+    def draw_cluster_tree_decluttered(self, state, output_file="topic_tree_decluttered.pdf",
+                                      min_cluster_size: int = 5,
+                                      edge_pen_width: float = 0.5,
+                                      vertex_size: float = 1.0,
+                                      layout="sfdp"):
+        if not isinstance(state, NestedBlockState):
+            print("Error: 'state' must be a NestedBlockState with hierarchy.")
+            return
+        print(f"Rendering topic tree to {output_file}...")
+        bs = state.get_bs()
+        if min_cluster_size > 1:
+            for level, sizes in enumerate(bs):
+                for idx, size in enumerate(sizes):
+                    if size < min_cluster_size:
+                        # This will not hide the clusterin the plot,
+                        # but you can use empty_branches=True to hide empty clusters
+                        pass
+        draw_hierarchy(state, output=output_file, empty_branches=True,
+                       edge_pen_width=edge_pen_width,
+                       vertex_size=vertex_size,
+                       layout=layout)
+        print(f"Topic tree rendered to {output_file}")
 
     def draw_sankey_diagram(self):
-        import plotly.graph_objects as go
-        from collections import Counter
         if not self.block_levels or len(self.block_levels) < 2:
             print("At least two block levels required for Sankey diagram.")
             return
@@ -289,8 +324,6 @@ class TopicDocumentMapper:
 
 
     def generate_community_labels(self, level: int = -1, method: str = "heuristic", top_k: int = 5, save_path: str = None) -> Dict[int, str]:
-        import openai  # Only if using LLM method
-
         keywords_by_comm = self.get_topic_keywords(top_k=top_k, level=level)
         labels = {}
 
@@ -321,3 +354,151 @@ class TopicDocumentMapper:
                     writer.writerow([comm_id, label, ", ".join(keywords_by_comm.get(comm_id, []))])
 
         return labels
+
+    def generate_interactive_graph(self, output_file="interactive_graph.html",
+                                   width="1000px", height="700px"):
+        net = Network(width=width, height=height, notebook=False, cdn_resources="in_line")
+        net.from_nx(self.graph)
+        net.show_buttons(filter_=['physics'])
+        net.write_html(output_file)
+        print(f"Graph saved to {output_file}")
+
+    def convert_to_graphtool(self) -> "gt.Graph":
+        """Convert the internal NetworkX graph to a graph-tool Graph.
+
+        Returns:
+            gt.Graph: The converted undirected graph-tool graph with node names as a vertex property.
+        """
+        import graph_tool.all as gt
+
+        gt_graph = gt.Graph(directed=False)
+        node_index = {}
+        name_prop = gt_graph.new_vertex_property("string")
+
+        for node in self.graph.nodes:
+            v = gt_graph.add_vertex()
+            node_index[node] = v
+            name_prop[v] = node
+
+        for u, v in self.graph.edges:
+            gt_graph.add_edge(node_index[u], node_index[v])
+
+        gt_graph.vertex_properties["name"] = name_prop
+        return gt_graph
+
+    def generate_topic_tree(
+        self,
+        output_file: str = "topic_tree.pdf",
+        min_cluster_size: int = 5,
+        edge_pen_width: float = 0.5,
+        vertex_size: float = 1.0,
+        layout: str = "sfdp"
+    ) -> None:
+        """Generate and save a hierarchical topic tree visualization, hiding clusters smaller than min_cluster_size."""
+        if not self.block_levels or len(self.block_levels) < 2:
+            print("At least two block levels required for topic tree.")
+            return
+
+        gt_graph = self.convert_to_graphtool()
+        import graph_tool.all as gt
+
+        # Fit nested block model
+        state = gt.minimize_nested_blockmodel_dl(gt_graph)
+        bs = state.get_bs()  # List of lists: block sizes at each level
+
+        # Mark small clusters as empty by setting their size to zero
+        for level, sizes in enumerate(bs):
+            for idx, size in enumerate(sizes):
+                if size < min_cluster_size:
+                    bs[level][idx] = 0
+
+        try:
+            print(f"Rendering topic tree to {output_file} (min_cluster_size={min_cluster_size})...")
+            gt.draw_hierarchy(
+                state,
+                output=output_file,
+                edge_pen_width=edge_pen_width,
+                vertex_size=vertex_size,
+                layout=layout,
+                empty_branches=True  # Hide clusters with size 0
+            )
+            print(f"Topic tree saved to {output_file}")
+        except Exception as e:
+            import logging
+            logging.error(f"Failed to generate topic tree: {e}")
+
+def assign_documents_to_communities(graph, documents, level):
+    # Build a mapping from community to node at this level
+    comm_to_nodes = {}
+    for node, data in graph.nodes(data=True):
+        comm = data['levels'].get(level)
+        if comm is not None:
+            comm_to_nodes.setdefault(comm, []).append(node)
+    # For each document, assign it to the community of its words
+    for doc in documents:
+        words = [w for w in doc.split() if w in graph.nodes]
+        # Count which community appears most in this doc
+        comm_counts = {}
+        for w in words:
+            comm = graph.nodes[w]['levels'].get(level)
+            if comm is not None:
+                comm_counts[comm] = comm_counts.get(comm, 0) + 1
+        if comm_counts:
+            # Assign doc to the most common community in this doc
+            main_comm = max(comm_counts, key=comm_counts.get)
+            for node in comm_to_nodes[main_comm]:
+                if 'documents' not in graph.nodes[node]:
+                    graph.nodes[node]['documents'] = []
+                graph.nodes[node]['documents'].append(doc)
+
+def assign_subtopics(graph):
+    # Find the maximum level in the graph
+    max_level = max(
+        (max(data['levels'].keys()) for _, data in graph.nodes(data=True) if 'levels' in data and data['levels']),
+        default=0
+    )
+    for level in range(max_level):
+        # Build a mapping: (level, community) -> set of nodes at that level/community
+        comm_to_nodes = {}
+        for node, data in graph.nodes(data=True):
+            comm = data['levels'].get(level)
+            if comm is not None:
+                comm_to_nodes.setdefault((level, comm), set()).add(node)
+        # Build a mapping: (level+1, community) -> set of nodes at that level/community
+        next_comm_to_nodes = {}
+        for node, data in graph.nodes(data=True):
+            comm = data['levels'].get(level + 1)
+            if comm is not None:
+                next_comm_to_nodes.setdefault((level + 1, comm), set()).add(node)
+        # For each node at this level, find all nodes at next level that are descendants
+        for node, data in graph.nodes(data=True):
+            comm = data['levels'].get(level)
+            if comm is not None:
+                # Find all next-level communities that contain nodes from this community
+                subtopics = set()
+                for (l, next_comm), nodes_in_next in next_comm_to_nodes.items():
+                    if l == level + 1:
+                        # If any node in nodes_in_next is also in this community at this level, it's a descendant
+                        if nodes_in_next & comm_to_nodes.get((level, comm), set()):
+                            subtopics.update(nodes_in_next & comm_to_nodes.get((level, comm), set()))
+                if 'subtopics' not in data:
+                    data['subtopics'] = {}
+                data['subtopics'][level + 1] = list(subtopics - {node})  # Exclude self if present
+
+def assign_keywords(graph, level, top_k=5):
+    # Build a mapping from community to nodes at this level
+    comm_to_nodes = {}
+    for node, data in graph.nodes(data=True):
+        comm = data['levels'].get(level)
+        if comm is not None:
+            comm_to_nodes.setdefault(comm, []).append(node)
+    # For each community, assign top_k nodes (by degree) as keywords
+    for comm, nodes in comm_to_nodes.items():
+        # Sort nodes by degree (descending)
+        sorted_nodes = sorted(nodes, key=lambda n: graph.degree(n), reverse=True)
+        keywords = sorted_nodes[:top_k]
+        # Assign keywords to all nodes in this community at this level
+        for node in nodes:
+            if 'keywords' not in graph.nodes[node]:
+                graph.nodes[node]['keywords'] = []
+            graph.nodes[node]['keywords'] = keywords

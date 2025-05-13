@@ -32,7 +32,16 @@ conda activate hsbm_env
 ```
 **Install Additional Dependencies**
 ```
-conda install spacy
-conda install openai
-conda install -c conda-forge pymupdf python-docx
+conda install spacy plotly python-dotenv openai
+pip install pymupdf python-docx pyvis dash dash-cytoscape
+```
+**To Run the Dash Dashboard App under ddashboard/src**
+Navigate to ddashboard/src
+Make sure that
+1. you are in the hsbm_env venv
+2. the graph is stored in topic_graph.gpickle
+```
+conda install dash
+pip install dash_bootstrap_components
+python app.py
 ```

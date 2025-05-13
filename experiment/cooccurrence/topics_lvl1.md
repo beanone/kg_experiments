@@ -1,28 +1,21 @@
-## Topic 1 (Level 1)
-**Keywords**: polarizabilitie, coordinate, genome, molecule, electric
+## Topic 22 (Level 1)
+**Keywords**: protein, pande, bioinformatic, datum, gpu
 
-**Document 9**:
+**Document 1**:
 
-an anisotropic liquid is a liquid which has and where the molecules have an average structural order relative to each other along their molecular axis that ordinary do not have liquid are examples of anisotropic liquids...
+a quantum solvent is essentially a superfluid a quantum liquid used to another chemical species any superfluid can theoretically act as a quantum solvent however in practice the only viable superfluid medium that can currently be used is helium and it has been successfully accomplished in controlled...
 
-## Topic 13 (Level 1)
-**Keywords**: home, client, pande, simulation, bioinformatic
+## Topic 23 (Level 1)
+**Keywords**: home, law, project, force, gene
 
-**Document 3**:
+**Document 15**:
 
-in physics an effective field theory is as any effective theory an approximate theory usually a quantum field theory that includes appropriate degrees of freedom to describe physical phenomena occurring at a chosen length scale while and degrees of freedom at shorter distances or at higher energies ...
+the magic angle is a particular value of the collection angle of an electron microscope at which the measured energy loss spectrum becomes independent of the angle of the sample with respect to the beam direction the magic angle is not not uniquely defined for isotropic samples but the definition is...
 
-## Topic 34 (Level 1)
-**Keywords**: formula, gene, mutation, beam, momentum
+## Topic 32 (Level 1)
+**Keywords**: simulation, source, nucleon, electric, computing
 
-**Document 2**:
+**Document 4**:
 
-coupling is a coupled rotational and vibrational excitation of a molecule it is different from coupling which involves a change in all of electronic vibrational and rotational states simultaneously rotational vibrational spectroscopy generally vibrational transitions occur in conjunction with rotati...
-
-## Topic 36 (Level 1)
-**Keywords**: protein, uncertainty, law, datum, computational
-
-**Document 0**:
-
-the nuclear overhauser effect noe is the transfer of nuclear spin polarization from one nuclear spin population to another via cross relaxation it is a common phenomenon observed by nuclear magnetic resonance nmr spectroscopy the theoretical basis for the noe was described and experimentally verifie...
+chemical physics is a of chemistry and physics that phenomena using techniques from atomic and molecular physics and condensed matter physics it is the branch of physics that studies chemical processes from the point of view of physics while at the interface of physics and chemistry chemical physics...
 
