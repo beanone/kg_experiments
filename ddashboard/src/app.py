@@ -136,7 +136,6 @@ def update_topic_dropdown_and_navigate(level, n_clicks_list, node_data, ids, cur
 )
 def display_topic_details(topic_id, level):
     if not topic_id or level is None:
-        print("No topic selected or level is None.")
         return "Select a topic to see details.", []
     details = model.get_topic_details(topic_id, level=level)
     # Handle keywords as dict or list
@@ -164,7 +163,6 @@ def display_topic_details(topic_id, level):
         subs = subtopics
     else:
         subs = []
-    print(f"display_topic_details: topic_id={topic_id}, level={level}, subtopics for level+1 ({level+1}): {subs}")
     return (
         html.Div([
             html.H3(f"Topic {details['id']} (Level {details['level']})"),

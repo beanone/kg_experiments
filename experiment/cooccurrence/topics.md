@@ -1,36 +1,46 @@
-## Topic 2 (Level -1)
-**Keywords**: nuclear, microwave, effect, noe, larmor
+## Topic 29 (Level -1)
+**Keywords**: particle, faraday, cup, metal, charge
 
-**Document 0**:
+**Document 34**:
 
-the nuclear overhauser effect noe is the transfer of nuclear spin polarization from one nuclear spin population to another via cross relaxation it is a common phenomenon observed by nuclear magnetic resonance nmr spectroscopy the theoretical basis for the noe was described and experimentally verified by anderson and in the noe is an extension of the seminal work of american physicist albert overha...
+the faraday cup electrometer is the simplest form of an electrical aerosol instrument used in aerosol studies it consists of an electrometer and a filter inside a faraday cage charged particles collected by the filter generate an electric current which is measured by the electrometer principle according to law the charge collected on the faraday cup is the induced charge that means that the filter...
 
-## Topic 65 (Level -1)
-**Keywords**: air, hydrometer, pressure, liquid, flow
+## Topic 76 (Level -1)
+**Keywords**: vibration, frequency, transition, vibrational, rotational
 
-**Document 9**:
+**Document 2**:
 
-an anisotropic liquid is a liquid which has and where the molecules have an average structural order relative to each other along their molecular axis that ordinary do not have liquid are examples of anisotropic liquids...
+coupling is a coupled rotational and vibrational excitation of a molecule it is different from coupling which involves a change in all of electronic vibrational and rotational states simultaneously rotational vibrational spectroscopy generally vibrational transitions occur in conjunction with rotational transitions consequently it is possible to observe both rotational and vibrational transitions ...
 
-**Document 13**:
+## Topic 95 (Level -1)
+**Keywords**: spin, electron, polarization, field, magnetic
 
-in combustion physics fuel mass fraction is the ratio of fuel mass flow to the total mass flow of a fuel if an air flow is fuel free the fuel mass fraction is zero in fuel without gases the ratio is unity as fuel is in a combustion process the fuel mass fraction is reduced...
+**Document 7**:
 
-## Topic 164 (Level -1)
-**Keywords**: hamiltonian, landau, picture, oscillation, fermi
+the knight shift is a shift in the nuclear magnetic resonance frequency of a paramagnetic first published in by the american physicist walter david knight the knight shift refers to the relative shift k in nmr frequency for atoms in a metal e g sodium compared with the same atoms in a nonmetallic environment e g sodium chloride the observed shift reflects the local magnetic field produced at the s...
 
-**Document 54**:
+## Topic 125 (Level -1)
+**Keywords**: quantum, mechanic, theory, relativity, classical
 
-the law of maximum also known as law of the maximum is a principle developed by which states that total growth of a or a plant is proportional to about growth factors growth will not be greater than the aggregate values of the growth factors without the correction of the limiting growth factors and other are not fully or used resulting in resources applications hence the need to achieve maximal va...
+**Document 11**:
 
-## Topic 213 (Level -1)
-**Keywords**: object, concept, galileo, language, physics
+the rrkm theory is a theory of chemical reactivity it was developed by and in and in theory and into the rrkm theory in by who took the transition state theory developed by in into account these methods enable the computation of simple of the reaction rates from a few characteristics of the potential energy surface...
 
-**Document 4**:
+## Topic 130 (Level -1)
+**Keywords**: fragment, slac, center, accelerator, positron
 
-chemical physics is a of chemistry and physics that phenomena using techniques from atomic and molecular physics and condensed matter physics it is the branch of physics that studies chemical processes from the point of view of physics while at the interface of physics and chemistry chemical physics is distinct from physical chemistry in that it focuses more on the characteristic elements and theo...
+**Document 40**:
 
-## Topic 229 (Level -1)
+a fragment separator is an ion optical device used to focus and separate products from the collision of relativistic ion beams with thin targets selected products can then be studied individually fragment separators typically of a series of superconducting magnetic elements the thin target immediately before the separator allows the fragments produced through various reactions to the target materi...
+
+## Topic 134 (Level -1)
+**Keywords**: bioinformatic, computational, research, computer, program
+
+**Document 49**:
+
+the journal of computational biology is a peer reviewed scientific journal dedicated to computational biology and bioinformatics the journal is published in issues per year by...
+
+## Topic 149 (Level -1)
 **Keywords**: law, force, body, momentum, motion
 
 **Document 24**:
@@ -41,19 +51,51 @@ image laws in latin thumb right newton s first and second laws in latin from the
 
 euler s laws of motion formulated by euler about years after isaac newton formulated his laws about the motion of particles them to rigid body motion overview euler s first law euler s first law states that the linear momentum of a body formula is equal to the product of the mass of the body and the velocity of its center of mass formula internal forces between the particles that make up a body do...
 
-## Topic 319 (Level -1)
-**Keywords**: detector, laser, imaging, mode, velocity
+## Topic 193 (Level -1)
+**Keywords**: formula, coordinate, mode, normal, harmonic
+
+**Document 10**:
+
+the rotating wave approximation is an approximation used in atom and magnetic resonance in this approximation terms in a hamiltonian which oscillate rapidly are neglected this is a valid approximation when the applied electromagnetic radiation is near resonance with an atomic resonance and the intensity is low terms in the which oscillate with frequencies formula are neglected while terms which os...
+
+**Document 19**:
+
+mcconnell equation describes the proportional dependence of the hyperfine constant formula on the spin density formula the probability of an unpaired electron being on a particular atom in radical compounds such as radical formula formula formula is an empirical constant that can range from to history the equation is named after m mcconnell of stanford university who first presented it in in an ar...
+
+## Topic 350 (Level -1)
+**Keywords**: nuclear, microwave, effect, noe, larmor
+
+**Document 0**:
+
+the nuclear overhauser effect noe is the transfer of nuclear spin polarization from one nuclear spin population to another via cross relaxation it is a common phenomenon observed by nuclear magnetic resonance nmr spectroscopy the theoretical basis for the noe was described and experimentally verified by anderson and in the noe is an extension of the seminal work of american physicist albert overha...
+
+## Topic 433 (Level -1)
+**Keywords**: detector, laser, imaging, velocity, ion
 
 **Document 17**:
 
 photofragment ion imaging or more generally product imaging is an experimental technique for making measurements of the velocity of product molecules or particles following a chemical reaction or the photodissociation of a molecule the method uses a two dimensional detector usually a microchannel plate to record the arrival positions of state selected ions created by enhanced multi photon rempi th...
 
-**Document 40**:
+## Topic 472 (Level -1)
+**Keywords**: biouml, tool, open, version, web
 
-a fragment separator is an ion optical device used to focus and separate products from the collision of relativistic ion beams with thin targets selected products can then be studied individually fragment separators typically of a series of superconducting magnetic elements the thin target immediately before the separator allows the fragments produced through various reactions to the target materi...
+**Document 60**:
 
-## Topic 323 (Level -1)
-**Keywords**: wave, point, tank, angle, ripple
+the definition of the knotted protein a knot is defined as a of a three dimensional points to a circle according to this definition a knot only make senses for a closed loop however if we a point in space at distance and to the n and c respectively through a virtual bond the protein can be treated as a closed loop introduction of the knotted protein knotted proteins present one of the most challen...
+
+**Document 61**:
+
+biouml is an open source software platform for the analysis of data from omics sciences research and other advanced computational biology developed by scientists from the institute of systems biology in the platform is freely available online and used in research labs mostly in academic institutions for the discovery of disease and there is a commercial version available from bioinformatics servic...
+
+## Topic 495 (Level -1)
+**Keywords**: source, roadway, noise, pollution, fluid
+
+**Document 37**:
+
+a point source is a single localized source of something a point source has negligible extent it from other source geometries sources are called point sources because in mathematical modeling these sources can usually be approximated as a mathematical point to analysis the actual source need not be physically small if its size is negligible relative to other length scales in the problem for exampl...
+
+## Topic 580 (Level -1)
+**Keywords**: wave, tank, ripple, water, obstacle
 
 **Document 26**:
 
@@ -63,60 +105,25 @@ in physics and engineering a ripple tank is a shallow glass tank of water used i
 
 a wave tank is a laboratory for observing the behavior of surface waves the typical wave tank is a box filled with liquid usually water leaving open or air filled space on top at one end of the tank an generates waves the other end usually has a wave surface a similar device is the ripple tank which is flat and shallow and used for observing patterns of surface waves from above a wave is a wave ta...
 
-## Topic 343 (Level -1)
-**Keywords**: source, roadway, noise, pollution, fluid
+## Topic 606 (Level -1)
+**Keywords**: object, concept, galileo, language, physics
 
-**Document 37**:
+**Document 4**:
 
-a point source is a single localized source of something a point source has negligible extent it from other source geometries sources are called point sources because in mathematical modeling these sources can usually be approximated as a mathematical point to analysis the actual source need not be physically small if its size is negligible relative to other length scales in the problem for exampl...
+chemical physics is a of chemistry and physics that phenomena using techniques from atomic and molecular physics and condensed matter physics it is the branch of physics that studies chemical processes from the point of view of physics while at the interface of physics and chemistry chemical physics is distinct from physical chemistry in that it focuses more on the characteristic elements and theo...
 
-## Topic 351 (Level -1)
-**Keywords**: molecule, energy, state, frequency, atom
+## Topic 664 (Level -1)
+**Keywords**: air, hydrometer, landau, pressure, oscillation
 
-**Document 2**:
+**Document 9**:
 
-coupling is a coupled rotational and vibrational excitation of a molecule it is different from coupling which involves a change in all of electronic vibrational and rotational states simultaneously rotational vibrational spectroscopy generally vibrational transitions occur in conjunction with rotational transitions consequently it is possible to observe both rotational and vibrational transitions ...
+an anisotropic liquid is a liquid which has and where the molecules have an average structural order relative to each other along their molecular axis that ordinary do not have liquid are examples of anisotropic liquids...
 
-## Topic 395 (Level -1)
-**Keywords**: scientific, scientist, researcher, first, public
+**Document 13**:
 
-**Document 39**:
+in combustion physics fuel mass fraction is the ratio of fuel mass flow to the total mass flow of a fuel if an air flow is fuel free the fuel mass fraction is zero in fuel without gases the ratio is unity as fuel is in a combustion process the fuel mass fraction is reduced...
 
-cern directors general typically serve year terms beginning on january during the cern had co directors...
-
-## Topic 477 (Level -1)
-**Keywords**: uncertainty, theory, journalist, risk, decomposition
-
-**Document 3**:
-
-in physics an effective field theory is as any effective theory an approximate theory usually a quantum field theory that includes appropriate degrees of freedom to describe physical phenomena occurring at a chosen length scale while and degrees of freedom at shorter distances or at higher energies the renormalization group presently effective field theories are discussed in the context of the ren...
-
-## Topic 494 (Level -1)
-**Keywords**: software, biouml, available, tool, open
-
-**Document 61**:
-
-biouml is an open source software platform for the analysis of data from omics sciences research and other advanced computational biology developed by scientists from the institute of systems biology in the platform is freely available online and used in research labs mostly in academic institutions for the discovery of disease and there is a commercial version available from bioinformatics servic...
-
-## Topic 504 (Level -1)
-**Keywords**: foldit, slac, game, center, accelerator
-
-**Document 53**:
-
-the louis and beatrice laufer center for physical and quantitative biology is a multidisciplinary venue where research from such fields as biology biochemistry chemistry computer science engineering genetics mathematics and physics can come together and target medical and biological problems using both computation and experiment the laufer center is part of university the center s current director...
-
-## Topic 526 (Level -1)
-**Keywords**: beam, surface, proton, sample, ray
-
-**Document 27**:
-
-particle induced x ray emission or proton induced x ray emission pixe is a technique used in the determining of the elemental make up of a material or sample when a material is to an ion beam atomic interactions occur that give off radiation of in the x ray part of the electromagnetic spectrum specific to an element pixe is a powerful yet non destructive elemental analysis technique now used routi...
-
-**Document 33**:
-
-x ray crystal truncation rod scattering is a powerful method in surface science based on analysis of surface x ray diffraction patterns from a crystalline surface for an crystal the diffracted pattern is in delta function like bragg peaks presence of crystalline surfaces results in additional structure along so called truncation rods linear regions in momentum space normal to the surface crystal t...
-
-## Topic 630 (Level -1)
+## Topic 674 (Level -1)
 **Keywords**: gene, genome, sequence, transcriptome, contig
 
 **Document 56**:
@@ -126,20 +133,6 @@ the small rnas snornas represent an abundant group of small non coding rnas in w
 **Document 62**:
 
 de novo transcriptome assembly is the method of creating a transcriptome without the aid of a reference genome introduction before the development of de novo transcriptome assembly transcriptome information was only available for a of model organisms utilized by the international scientific research community since sequencing was very costly even just five years ago only transcriptomes of organism...
-
-## Topic 632 (Level -1)
-**Keywords**: particle, faraday, cup, reaction, charge
-
-**Document 34**:
-
-the faraday cup electrometer is the simplest form of an electrical aerosol instrument used in aerosol studies it consists of an electrometer and a filter inside a faraday cage charged particles collected by the filter generate an electric current which is measured by the electrometer principle according to law the charge collected on the faraday cup is the induced charge that means that the filter...
-
-## Topic 748 (Level -1)
-**Keywords**: protein, algorithm, network, function, farm
-
-**Document 60**:
-
-the definition of the knotted protein a knot is defined as a of a three dimensional points to a circle according to this definition a knot only make senses for a closed loop however if we a point in space at distance and to the n and c respectively through a virtual bond the protein can be treated as a closed loop introduction of the knotted protein knotted proteins present one of the most challen...
 
 ## Topic 768 (Level -1)
 **Keywords**: conference, iscb, president, biology, society
